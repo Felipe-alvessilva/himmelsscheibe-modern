@@ -1,0 +1,28 @@
+# Build outputs
+build/
+dist/
+*.apk
+*.apks
+*.aab
+
+# Keystore — nunca versionar chaves de assinatura
+*.keystore
+*.jks
+
+# apktool intermediários
+*.dex
+
+# Android Studio / Gradle
+.idea/
+*.iml
+local.properties
+.gradle/
+gradle/wrapper/gradle-wrapper.jar
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Assets binários grandes — versionar só o necessário
+# O OBB fica fora do repositório (vai em /sdcard/Android/obb/ no device)
+assets/bin/Data/

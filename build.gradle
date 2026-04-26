@@ -1,0 +1,74 @@
+// build.gradle — Projeto Himmelsscheibe (refactoring de APK legado)
+//
+// Este não é um projeto Android nativo: a lógica do jogo está em libs Unity (.so).
+// O Gradle aqui serve para orquestrar o ciclo apktool → zipalign → apksigner,
+// permitindo usar o Android Studio como editor e disparar builds pelo IDE.
+
+plugins {
+    id 'base'
+}
+
+// ── Caminhos ──────────────────────────────────────────────────────────────────
+def apktoolJar  = file("${System.getProperty('user.home')}/ApkProjects/apktool.jar")
+def keystore    = file("${System.getProperty('user.home')}/ApkProjects/debug.keystore")
+def buildTools  = "${System.getenv('LOCALAPPDATA')}/Android/Sdk/build-tools/36.1.0"
+def outputDir   = file("${System.getProperty('user.home')}/ApkProjects/output")
+
+def apkUnsigned = new File(outputDir, "himmelsscheibe-unsigned.apk")
+def apkAligned  = new File(outputDir, "himmelsscheibe-aligned.apk")
+def apkSigned   = new File(outputDir, "himmelsscheibe-signed.apk")
+
+// ── Task 1: apktool build ─────────────────────────────────────────────────────
+task apktoolBuild(type: Exec) {
+    description = "Reconstrói o APK a partir dos arquivos decompilados (smali + res + assets)"
+    group       = "Himmelsscheibe"
+
+    doFirst { outputDir.mkdirs() }
+
+    commandLine 'java', '-jar', apktoolJar.absolutePath,
+                'b', projectDir.absolutePath,
+                '-o', apkUnsigned.absolutePath,
+                '--use-aapt2'
+}
+
+// ── Task 2: zipalign ──────────────────────────────────────────────────────────
+task zipalign(type: Exec, dependsOn: apktoolBuild) {
+    description = "Alinha o APK para otimizar leitura em memória (exigido pelo apksigner)"
+    group       = "Himmelsscheibe"
+
+    commandLine "${buildTools}/zipalign.exe", '-f', '-v', '4',
+                apkUnsigned.absolutePath, apkAligned.absolutePath
+}
+
+// ── Task 3: signApk ──────────────────────────────────────────────────────────
+task signApk(type: Exec, dependsOn: zipalign) {
+    description = "Assina o APK com o keystore de debug"
+    group       = "Himmelsscheibe"
+
+    environment 'JAVA_HOME', System.getProperty('java.home')
+
+    commandLine "${buildTools}/apksigner.bat", 'sign',
+                '--ks', keystore.absolutePath,
+                '--ks-pass', 'pass:android',
+                '--key-pass', 'pass:android',
+                '--ks-key-alias', 'androiddebugkey',
+                '--out', apkSigned.absolutePath,
+                apkAligned.absolutePath
+
+    doLast {
+        println "\n✓ APK pronto: ${apkSigned.absolutePath}"
+        println "  Execute 'installApk' para instalar no dispositivo conectado."
+    }
+}
+
+// ── Task 4: installApk ───────────────────────────────────────────────────────
+task installApk(type: Exec, dependsOn: signApk) {
+    description = "Instala o APK no dispositivo via ADB (USB Debugging deve estar ativo)"
+    group       = "Himmelsscheibe"
+
+    def adb = "${System.getenv('LOCALAPPDATA')}/Android/Sdk/platform-tools/adb.exe"
+    commandLine adb, 'install', '-r', apkSigned.absolutePath
+}
+
+// 'build' padrão do Gradle executa o ciclo completo
+build.dependsOn signApk

@@ -1,0 +1,150 @@
+Signature-Version: 1.0
+SHA1-Digest-Manifest-Main-Attributes: SHCGxzzEaMI6zkXjfCtYUEmyHUA=
+Created-By: 1.6.0_45 (Sun Microsystems Inc.)
+SHA1-Digest-Manifest: NpCVhx2SUd7p/x0JNtdYJ19ijxU=
+
+Name: assets/bin/Data/Managed/Assembly-CSharp.dll
+SHA1-Digest: K7S9dEZha9B6ms8FBsxmxyPucik=
+
+Name: res/layout/status_bar_ongoing_event_progress_bar.xml
+SHA1-Digest: kg8CIOm14zqt+StsENAMo3x10Zc=
+
+Name: res/drawable-ldpi-v4/close.png
+SHA1-Digest: x7XSQTw3Lj6JZbZaX0PWlRdZAC4=
+
+Name: res/drawable-hdpi-v4/close.png
+SHA1-Digest: P+e6twHDeqtaE1he30/FSulMliA=
+
+Name: res/drawable/facebook_icon.png
+SHA1-Digest: PDgDHoip/6HBjLGwRLz06l35sy4=
+
+Name: res/drawable-hdpi-v4/app_icon.png
+SHA1-Digest: GRyGUnK4WAmuiX5oZ8BRvy4c+bQ=
+
+Name: lib/armeabi-v7a/libmono.so
+SHA1-Digest: WT52o8OaJeqpyL8iHqkUUmcN0I4=
+
+Name: assets/bin/Data/splash.png
+SHA1-Digest: Fe2KniuF6kD+xXFzzBavDM/rIug=
+
+Name: resources.arsc
+SHA1-Digest: eq/EKDS8fxIzkXg7mQgBk/w6FxA=
+
+Name: assets/bin/Data/Managed/Assembly-UnityScript.dll
+SHA1-Digest: Rtdq2bYB/acvOes9VqlqwDcGtmY=
+
+Name: assets/bin/Data/Managed/System.dll
+SHA1-Digest: 81JV1h7x3C9Uq/RsRwWWCpPYjv4=
+
+Name: res/drawable-mdpi-v4/notify_panel_notification_icon_bg.png
+SHA1-Digest: tIhoHZP0GQ/rCqpDNN7U3oam8R4=
+
+Name: assets/bin/Data/Managed/Boo.Lang.dll
+SHA1-Digest: xDBFD5MzbJ6tmx1zFPDQ+90XT3k=
+
+Name: AndroidManifest.xml
+SHA1-Digest: 5JV7KUFORAp+mhCrm3kr8DkEesk=
+
+Name: res/drawable-hdpi-v4/facebook_icon.png
+SHA1-Digest: 2i+RSI3oLFVr/w5cnougWH8WzM8=
+
+Name: res/drawable-hdpi-v4/notify_panel_notification_icon_bg.png
+SHA1-Digest: N3YC9zLEOE13apSi7g9icPmaLG8=
+
+Name: lib/armeabi-v7a/libmain.so
+SHA1-Digest: +jYMwUpK20PLqD0f0rEayYEEhzU=
+
+Name: assets/bin/Data/unity default resources
+SHA1-Digest: t19cC+G3BCZOOZACKk/LhC3locc=
+
+Name: res/drawable/close.png
+SHA1-Digest: l5/yjxTfZSL0NClKXblMd5BdIoU=
+
+Name: res/drawable-xhdpi-v4/close.png
+SHA1-Digest: 1pnLLRK3PNi8EPN/1qnCfwWkGPg=
+
+Name: assets/bin/Data/Managed/UnityEngine.dll
+SHA1-Digest: TVBBS7Byon+ghn4Kr+W0mdxBv0I=
+
+Name: assets/bin/Data/PlayerConnectionConfigFile
+SHA1-Digest: cJL3D2VNwjh1IDK3W6X6hl2IYW0=
+
+Name: res/drawable-xxhdpi-v4/app_icon.png
+SHA1-Digest: YeZ+1e0MeITZFsePhkEZ/z8FpiI=
+
+Name: assets/bin/Data/sharedassets0.assets.split2
+SHA1-Digest: V4BxDThhfd4hUN/kXaOmo3en//M=
+
+Name: assets/bin/Data/sharedassets0.assets.split1
+SHA1-Digest: En7Svqxn7cqSpy0Qznf0g1gWDRg=
+
+Name: assets/bin/Data/sharedassets0.assets.split0
+SHA1-Digest: FO4mzPBcVRCuUcLTv/I4M0poqc8=
+
+Name: res/drawable-xxxhdpi-v4/app_icon.png
+SHA1-Digest: 3GqrfjQ95B4E5Uey3BjWghwfowo=
+
+Name: res/drawable-ldpi-v4/facebook_icon.png
+SHA1-Digest: uFrs4Vri1hmRj1+jLmt3QCdvjKA=
+
+Name: assets/bin/Data/mainData
+SHA1-Digest: IIu8Nnc8wuUVPnbY6wb7jbsNPAk=
+
+Name: assets/bin/Data/Managed/P31RestKit.dll
+SHA1-Digest: E2urb+TujhLJ7osqnbhb3x7PnzI=
+
+Name: classes.dex
+SHA1-Digest: 6h1LnmwogYglXqCYy2hBfHBu0NY=
+
+Name: assets/bin/Data/Managed/DarkArtsStudios.ScreenshotCreator.Runtim
+ e.dll
+SHA1-Digest: pjPN09DRiBIioTK3ltQ8V5HIPTU=
+
+Name: assets/bin/Data/settings.xml
+SHA1-Digest: 5wP6j5lIUM3QrbY3xbBizuOhURo=
+
+Name: lib/armeabi-v7a/libunity.so
+SHA1-Digest: 4mHRRQ47NQMaJTwdgYz4TV5S6QQ=
+
+Name: lib/x86/libmono.so
+SHA1-Digest: fwemMGYU6cHIU40CN74j2o4VYmg=
+
+Name: res/drawable-ldpi-v4/app_icon.png
+SHA1-Digest: FZzjYLw32VsbMk3xLn8892wjIAU=
+
+Name: assets/bin/Data/Managed/UnityArabicSupport.dll
+SHA1-Digest: 1yyJd+3SQMInX9SvdulwB8kz0F8=
+
+Name: res/layout/main.xml
+SHA1-Digest: TPZnhPRvtAakakUtm19dnyboJTY=
+
+Name: res/drawable-xhdpi-v4/app_icon.png
+SHA1-Digest: jp99U3C+Mjk+QhIT2eoRvpOb2AU=
+
+Name: res/drawable/app_icon.png
+SHA1-Digest: 3UCJfdZUISUHLvAdx27KuW28iWk=
+
+Name: assets/bin/Data/Managed/Assembly-CSharp-firstpass.dll
+SHA1-Digest: 38W2aE/ikc0yzUQRW1YGXgeFyU4=
+
+Name: assets/bin/Data/Managed/UnityEngine.UI.dll
+SHA1-Digest: iUNQ8J39dJ9DxTuV4CPFWlwUyn4=
+
+Name: assets/bin/Data/Managed/mscorlib.dll
+SHA1-Digest: fkRlE+ixk7s1/35c7avgjioHSCI=
+
+Name: assets/bin/Data/Managed/System.Core.dll
+SHA1-Digest: UewiPZTGNomanyohZU+O8XyUfbM=
+
+Name: assets/bin/Data/Resources/unity_builtin_extra
+SHA1-Digest: KgXW8EtyayIEMG5Bk3nqneLO3oE=
+
+Name: lib/x86/libunity.so
+SHA1-Digest: W6PV44jmLP1uX/GLh7MctboeSEo=
+
+Name: res/layout-v11/status_bar_ongoing_event_progress_bar.xml
+SHA1-Digest: iLENYwjVYuzzesnKhqIb4yoHv08=
+
+Name: lib/x86/libmain.so
+SHA1-Digest: QmmCkGbeZ2zuUc1BU8WKDFs3Nh0=
+
