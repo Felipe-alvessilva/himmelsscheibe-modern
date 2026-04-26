@@ -1,58 +1,58 @@
 # Himmelsscheibe — Patch Notes
 
-App original: **Lernabenteuer Deutsch — Das Geheimnis der Himmelsscheibe**  
-Desenvolvedor: Goethe-Institut  
-Pacote: `de.goethe.lernabenteuer`  
-Versão: 1.9.3 (versionCode 100193)
+Original app: **Lernabenteuer Deutsch — Das Geheimnis der Himmelsscheibe**  
+Developer: Goethe-Institut  
+Package: `de.goethe.lernabenteuer`  
+Version: 1.9.3 (versionCode 100193)
 
-## Objetivo
-Modernizar o APK original (targetSdk 22, 2015) para rodar em Android moderno (testado no Samsung Galaxy S23 Ultra, Android 14).
+## Goal
+Modernize the original APK (targetSdk 22, 2015) to run on modern Android (tested on Samsung Galaxy S23 Ultra, Android 14).
 
 ---
 
-## Patch 1 — SDK e Manifest (`apktool.yml`, `AndroidManifest.xml`)
+## Patch 1 — SDK and Manifest (`apktool.yml`, `AndroidManifest.xml`)
 
 - `minSdkVersion` 9 → 19
 - `targetSdkVersion` 22 → 28
-- `android:exported="true"` na activity launcher (obrigatório para targetSdk ≥ 31)
-- `android:exported="false"` em todas as outras activities, services e receivers
-- `android:requestLegacyExternalStorage="true"` — mantém acesso a storage no Android 10
-- `android:networkSecurityConfig` — permite HTTP (Unity antigo pode precisar)
-- `WRITE/READ_EXTERNAL_STORAGE` com `maxSdkVersion="28"` — limpa permissão obsoleta
-- Removida permissão `CHECK_LICENSE` (Google Play DRM antigo)
+- `android:exported="true"` on the launcher activity (required for targetSdk ≥ 31)
+- `android:exported="false"` on all other activities, services and receivers
+- `android:requestLegacyExternalStorage="true"` — preserves storage access on Android 10
+- `android:networkSecurityConfig` — allows HTTP traffic (legacy Unity may require it)
+- `WRITE/READ_EXTERNAL_STORAGE` with `maxSdkVersion="28"` — cleans up obsolete permission
+- Removed `CHECK_LICENSE` permission (legacy Google Play DRM)
 - `installLocation` preferExternal → internalOnly
 
-Arquivo novo: `res/xml/network_security_config.xml`
+New file: `res/xml/network_security_config.xml`
 
 ---
 
 ## Patch 2 — Notification.Builder (`smali/com/unity3d/plugin/downloader/b/i.smali`)
 
-**Problema:** `Notification.setLatestEventInfo()` foi removido na API 23. Com targetSdk > 22 o Android lança `RuntimeException`.
+**Problem:** `Notification.setLatestEventInfo()` was removed in API 23. With targetSdk > 22 Android throws a `RuntimeException`.
 
-**Correção:** Substituído por `Notification.Builder` nas duas ocorrências do método:
-- `a(I)V` — notificação de status de download
-- `a(Lcom/unity3d/plugin/downloader/a/b;)V` — notificação de progresso
+**Fix:** Replaced with `Notification.Builder` in both call sites:
+- `a(I)V` — download status notification
+- `a(Lcom/unity3d/plugin/downloader/a/b;)V` — download progress notification
 
 ---
 
 ## Patch 3 — License Check bypass (`smali/com/unity3d/plugin/downloader/c/j.smali`)
 
-**Problema:** `checkAccess()` tenta `bindService` ao Google Play para verificar licença. Sem a Play Store disponível, a thread principal trava indefinidamente, tornando o dispositivo inoperante.
+**Problem:** `checkAccess()` calls `bindService` to Google Play to verify the app license. Without Play Store available, the main thread blocks indefinitely, making the device unresponsive.
 
-**Correção:** Método `a(Lcom/unity3d/plugin/downloader/c/n;)V` substituído para chamar `callback.a()` diretamente (equivalente ao caminho "cached license response" que já existia no código original).
+**Fix:** Method `a(Lcom/unity3d/plugin/downloader/c/n;)V` replaced to call `callback.a()` directly (equivalent to the "cached license response" path that already existed in the original code).
 
-O método original foi preservado renomeado como `a_original_disabled` para referência.
+The original method was preserved and renamed to `a_original_disabled` for reference.
 
 ---
 
-## Instalação
+## Installation
 
-### Dependências
+### Dependencies
 - Java 21 (Android Studio JBR): `C:\Program Files\Android\Android Studio\jbr`
 - Android SDK Build Tools 36.1.0
 - apktool 2.11.1: `C:\Users\Felip\ApkProjects\apktool.jar`
-- Keystore de debug: `C:\Users\Felip\ApkProjects\debug.keystore`
+- Debug keystore: `C:\Users\Felip\ApkProjects\debug.keystore`
 
 ### Build
 ```bat
@@ -60,28 +60,28 @@ cd C:\Users\Felip\ApkProjects
 build.bat
 ```
 
-### Instalar no dispositivo
+### Install on device
 ```bat
-# Com um único device conectado:
+# Single device connected:
 install.bat
 
-# Com múltiplos devices (ex: emulador + celular):
+# Multiple devices (e.g. emulator + phone):
 adb -s <SERIAL> install -r output\himmelsscheibe-signed.apk
 ```
 
-### OBB (dados do jogo — ~116MB, obrigatório)
+### OBB (game data — ~116MB, required)
 ```bat
 adb -s <SERIAL> shell "mkdir -p /sdcard/Android/obb/de.goethe.lernabenteuer"
 adb -s <SERIAL> push main.100193.de.goethe.lernabenteuer.obb /sdcard/Android/obb/de.goethe.lernabenteuer/
 ```
 
-O arquivo OBB não está no repositório. Baixar em: https://apkfab.com/adventure-german/de.goethe.lernabenteuer
+The OBB file is not included in this repository. Download it from: https://apkfab.com/adventure-german/de.goethe.lernabenteuer
 
 ---
 
-## Próximas fases (planejado)
+## Planned next phases
 
 - [ ] `targetSdk` 28 → 31 + Notification Channels
-- [ ] Support Library → AndroidX (1.048 arquivos Smali)
-- [ ] Scoped Storage (substituir WRITE_EXTERNAL_STORAGE)
-- [ ] ARM64 nativo (exige projeto Unity original)
+- [ ] Support Library → AndroidX (1,048 Smali files)
+- [ ] Scoped Storage (replace WRITE_EXTERNAL_STORAGE)
+- [ ] Native ARM64 support (requires original Unity project)
