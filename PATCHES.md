@@ -75,7 +75,8 @@ adb -s <SERIAL> shell "mkdir -p /sdcard/Android/obb/de.goethe.lernabenteuer"
 adb -s <SERIAL> push main.100193.de.goethe.lernabenteuer.obb /sdcard/Android/obb/de.goethe.lernabenteuer/
 ```
 
-The OBB file is not included in this repository. Download it from: https://apkfab.com/adventure-german/de.goethe.lernabenteuer
+The OBB file is not included in this repository. Download the XAPK from: https://apkpure.com/adventure-german/de.goethe.lernabenteuer/download  
+Extract the `.xapk` (it's a ZIP) and copy the `.obb` from `Android/obb/de.goethe.lernabenteuer/` inside it.
 
 ---
 
